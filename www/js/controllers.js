@@ -4,14 +4,14 @@ angular.module('starter.controllers', [])
 
     $scope.showAlert = function() {
      var alertPopup = $ionicPopup.alert({
-       title: 'Agenda',
+       title: 'Restaurante',
        template: 'Datos guardados'
      });
     }
 
-    $scope.guardar = function(persona){
+    $scope.guardar = function(restaurante){
 
-        $cordovaSQLite.execute(db, 'INSERT INTO agenda (nombre,apellido,telefono,email) VALUES (?,?,?,?)', [persona.nombre,persona.apellido,persona.telefono,persona.email])
+        $cordovaSQLite.execute(db, 'INSERT INTO restaurante (id,nombre,descripcion,precio) VALUES (?,?,?,?)', [restaurante.id,restaurante.nombre,restaurante.descripcion,restaurante.preciol])
         .then(function(result) {
             $scope.statusMessage = "Registro guardado!";
         }, function(error) {

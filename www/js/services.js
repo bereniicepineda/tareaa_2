@@ -13,7 +13,7 @@ angular.module('starter.services', [])
 
       chats = [];
 
-      $cordovaSQLite.execute(db, 'SELECT * FROM agenda ORDER BY id DESC')
+      $cordovaSQLite.execute(db, 'SELECT * FROM restaurante ORDER BY id DESC')
        .then(
           function(result) {
              if (result.rows.length > 0) {
@@ -21,9 +21,8 @@ angular.module('starter.services', [])
                       {
                         chats.push({"id":result.rows.item(i).id,
                                     "nombre":result.rows.item(i).nombre,
-                                    "apellido":result.rows.item(i).apellido,
-                                    "telefono":result.rows.item(i).telefono,
-                                    "email":result.rows.item(i).email});
+                                    "descripcion":result.rows.item(i).descripcion,
+                                    "precio":result.rows.item(i).precio,});
                       }
                     }
                 },
@@ -35,7 +34,7 @@ angular.module('starter.services', [])
       return chats;
     },
     remove: function(chat) {
-      $cordovaSQLite.execute(db, 'DELETE FROM agenda where id = ?',[chat.id])
+      $cordovaSQLite.execute(db, 'DELETE FROM restaurante where id = ?',[chat.id])
       .then(function(result){
           statusMessage = "Borrado";
       },

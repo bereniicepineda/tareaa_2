@@ -22,7 +22,7 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
       StatusBar.styleLightContent();
     }
 
-    //db = $cordovaSQLite.openDB("practica2_agenda.db");
+    //db = $cordovaSQLite.openDB("tarea22_agenda.db");
     if(window.cordova)
     {
      db = $cordovaSQLite.openDB("tarea22_restaurante.db");

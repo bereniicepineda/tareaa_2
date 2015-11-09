@@ -4,35 +4,32 @@
     <form name="agregarForm" novalidate>
     <div class="list">
     <label class="item item-input">
-      <span class="input-label">ID</span>
-      <input type="tel" name="id" ng-model="restaurante.id" required>
-   </label>
-
-   <label class="item item-input">
       <span class="input-label">Nombre</span>
-      <input type="text" name="nombre" ng-model="restaurante.nombre" required>
+      <input type="text" name="nombre" ng-model="menu.nombre" required>
    </label>
 
    <label class="item item-input">
       <span class="input-label">Descripcion</span>
-      <input type="tel" name="descripcion" ng-model="restaurante.descripcion" required>
+      <input type="text" name="descripcion" ng-model="menu.descripcion" required>
    </label>
 
    <label class="item item-input">
       <span class="input-label">Precio</span>
-      <input type="text" name="precio" ng-model="restaurante.precio" required>
+      <input type="tel" name="precio" ng-model="menu.precio" required>
    </label>
+
+
    </div>
 
    <div class="padding">
-        <p ng-show="agregarForm.id.$error.required">Escriba el ID</p>
         <p ng-show="agregarForm.nombre.$error.required">Escriba el nombre</p>
         <p ng-show="agregarForm.descripcion.$error.required">Escriba la descripcion</p>
         <p ng-show="agregarForm.precio.$error.required">Escriba el precio</p>
+
         <p>{{ statusMessage }}</p>
     </div>
 
-   <button type="button" class="button icon-left ion-compose button-positive" ng-disabled="agregarForm.$invalid" ng-click="guardar(persona)">
+   <button type="button" class="button icon-left ion-compose button-positive" ng-disabled="agregarForm.$invalid" ng-click="guardar(menu)">
       Guardar
    </button>
 

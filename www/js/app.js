@@ -22,8 +22,16 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
       StatusBar.styleLightContent();
     }
 
-    db = $cordovaSQLite.openDB("practica2_restaurante.db");
-    $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS agenda (id INTEGER PRIMARY KEY AUTOINCREMENT, id varchar(255),nombre varchar(255),descripcion varchar(255),preci varchar(255))');
+    //db = $cordovaSQLite.openDB("practica2_agenda.db");
+    if(window.cordova)
+    {
+     db = $cordovaSQLite.openDB("tarea22_restaurante.db");
+    } else {
+      db = window.openDatabase("tarea22_restaurante.db", "1", "Aplicacion", -1);
+    }
+
+    $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS restaurante (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre varchar(255),descripcion varchar(255),precio varchar(255))');
+
 
   });
 

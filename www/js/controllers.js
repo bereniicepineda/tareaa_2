@@ -9,9 +9,9 @@ angular.module('starter.controllers', [])
      });
     }
 
-    $scope.guardar = function(restaurante){
+    $scope.guardar = function(menu){
 
-        $cordovaSQLite.execute(db, 'INSERT INTO restaurante (nombre,descripcion,precio) VALUES (?,?,?,?)', [restaurante.id,restaurante.nombre,restaurante.descripcion,restaurante.preciol])
+        $cordovaSQLite.execute(db, 'INSERT INTO restaurante (nombre,descripcion,precio) VALUES (?,?,?)', [menu.nombre,menu.descripcion,menu.precio])
         .then(function(result) {
             $scope.statusMessage = "Registro guardado!";
         }, function(error) {
@@ -70,8 +70,27 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats,$cordovaSQLite) {
+
+  //$scope.chat = Chats.get($stateParams.chatId);
+  $scope.menu = Chats.get($stateParams.chatId);
+
+  $scope.guardar = function(menu){
+
+        $cordovaSQLite.execute(db, 'UPDATE restaurante set nombre=?,descripcion=?,precio=?, where id = ?', [menu.nombre,menu.descripcion,menu.precio,menu.id])
+        .then(function(result) {
+            $scope.statusMessage = "Registro guardado!";
+        }, function(error) {
+            $scope.statusMessage = "Error al guardar: " + error.message;
+        })
+
+
+       // console.log("NOMBRE: "+persona.nombre);
+        //console.log("ID: "+persona.id);
+    }
+
+
+
 })
 
 .controller('AccountCtrl', function($scope) {
